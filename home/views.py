@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from datetime import datetime
+from schedule.models import Calendar
 
 from home.forms import LoginForm, RegistrationForm, UserPasswordChangeForm, UserPasswordResetForm, UserSetPasswordForm
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView
@@ -11,10 +13,16 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
+
 def index(request):
+    calendar = Calendar.objects.get(slug='my-calendar')
+    today = datetime.today()
     context = {
         'parent': 'pages',
-        'segment': 'index'
+        'segment': 'index',
+        'calendar': calendar,
+        'month': today
     }
     return render(request, 'pages/dashboard.html', context)
 
