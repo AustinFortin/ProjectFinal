@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "schedule",
+    'djangobower',
 
     "home",
 ]
@@ -156,6 +157,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
+
+STATICFILES_FINDER = [
+    'djangobower.finders.BowerFinder'
+]
+
+BOWER_COMPONENTS_ROOT = '/C:/Users/austi/OneDrive/Desktop/Project/django-soft-dashboard-tailwind/components/'
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'jquery-ui',
+    'bootstrap',
+)
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #if not DEBUG:
